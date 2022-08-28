@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="wow-Evd5uLGiGV0hxPdbLOMPcT8yPy6yQO1AZzlkUvM">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ouyen.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="基本上就是python上各种分布现成的包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概统课上使用的python代码片段">
+<meta property="og:url" content="https://ouyen.github.io/py-in-statistics/index.html">
+<meta property="og:site_name" content="纯白的小站">
+<meta property="og:description" content="基本上就是python上各种分布现成的包">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ouyen.github.io/py-in-statistics/py-in-statistics/x5.jpg">
+<meta property="og:image" content="https://ouyen.github.io/py-in-statistics/py-in-statistics/t5.jpg">
+<meta property="og:image" content="https://ouyen.github.io/py-in-statistics/py-in-statistics/f.jpg">
+<meta property="article:published_time" content="2022-05-19T14:53:54.000Z">
+<meta property="article:modified_time" content="2022-05-29T16:59:23.725Z">
+<meta property="article:author" content="ouyen">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ouyen.github.io/py-in-statistics/py-in-statistics/x5.jpg">
+
+<link rel="canonical" href="https://ouyen.github.io/py-in-statistics/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>概统课上使用的python代码片段 | 纯白的小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="纯白的小站" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">纯白的小站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouyen.github.io/py-in-statistics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ouyen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="纯白的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          概统课上使用的python代码片段
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-19 22:53:54" itemprop="dateCreated datePublished" datetime="2022-05-19T22:53:54+08:00">2022-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-30 00:59:23" itemprop="dateModified" datetime="2022-05-30T00:59:23+08:00">2022-05-30</time>
+              </span>
+
+          
+            <div class="post-description">基本上就是python上各种分布现成的包</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="import"><a class="markdownIt-Anchor" href="#import"></a> import …</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from scipy import stats</span><br><span class="line">import matplotlib.style as style</span><br></pre></td></tr></table></figure>
+<p>画图的函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def plot(x,y,name&#x3D;&#39;&#39;,path&#x3D;&#39;&#39;):</span><br><span class="line">    style.use(&#39;fivethirtyeight&#39;)</span><br><span class="line">    plt.figure(dpi&#x3D;100)</span><br><span class="line">    plt.plot(x,y)</span><br><span class="line">    plt.axhline(y&#x3D;0,color&#x3D;&quot;black&quot;,linewidth&#x3D;1.3,alpha&#x3D;.7)</span><br><span class="line">    if name:</span><br><span class="line">        plt.title(name)</span><br><span class="line">    if path:</span><br><span class="line">        plt.savefig(path)</span><br></pre></td></tr></table></figure>
+<h2 id="正态分布"><a class="markdownIt-Anchor" href="#正态分布"></a> 正态分布</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N&#x3D;stats.n</span><br></pre></td></tr></table></figure>
+<h2 id="chi2分布"><a class="markdownIt-Anchor" href="#chi2分布"></a> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">χ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>分布</h2>
+<h3 id="生成"><a class="markdownIt-Anchor" href="#生成"></a> 生成</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x&#x3D;np.linspace(0,20,100)</span><br><span class="line">y1&#x3D;stats.chi2(5).pdf(x)</span><br><span class="line">plot(x,y1,&#39;$χ^2(5)$&#39;,&#39;x5.jpg&#39;)</span><br></pre></td></tr></table></figure>
+<p><img src="py-in-statistics/x5.jpg" alt="x5" /></p>
+<h3 id="置信区间"><a class="markdownIt-Anchor" href="#置信区间"></a> 置信区间</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c&#x3D;stats.chi2(144)</span><br><span class="line">c.interval(0.95)</span><br><span class="line">(112.67113138037668, 179.11367821420123)</span><br></pre></td></tr></table></figure>
+<h2 id="t分布"><a class="markdownIt-Anchor" href="#t分布"></a> T分布</h2>
+<h3 id="生成-2"><a class="markdownIt-Anchor" href="#生成-2"></a> 生成</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x2&#x3D;np.linspace(-5,5,100)</span><br><span class="line">y2&#x3D;stats.t(5).pdf(x2)</span><br><span class="line">plot(x2,y2,&#39;$t(5)$&#39;,&#39;t5.jpg&#39;)</span><br></pre></td></tr></table></figure>
+<p><img src="py-in-statistics/t5.jpg" alt="t5" /></p>
+<h2 id="f分布"><a class="markdownIt-Anchor" href="#f分布"></a> F分布</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x3&#x3D;np.linspace(0,6,300)</span><br><span class="line">y3&#x3D;stats.f(3,5).pdf(x3)</span><br><span class="line">plot(x3,y3,&#39;$F(3,5)$&#39;,&#39;f.jpg&#39;)</span><br></pre></td></tr></table></figure>
+<p><img src="py-in-statistics/f.jpg" alt="f" /></p>
+<h2 id="重要method"><a class="markdownIt-Anchor" href="#重要method"></a> 重要method:</h2>
+<table>
+<thead>
+<tr>
+<th>methods</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pdf(x, df, loc=0, scale=1)</strong></td>
+<td>Probability density function. 概率分布函数</td>
+</tr>
+<tr>
+<td>!!! <strong>cdf(x, df, loc=0, scale=1)</strong></td>
+<td>Cumulative distribution function. 累计分布函数</td>
+</tr>
+<tr>
+<td><strong>ppf(q, df, loc=0, scale=1)</strong></td>
+<td>Percent point function (inverse of <code>cdf</code> — percentiles). cdf的逆函数</td>
+</tr>
+<tr>
+<td><strong>interval(alpha, df, loc=0, scale=1)</strong></td>
+<td>Endpoints of the range that contains fraction alpha [0, 1] of the distribution</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from scipy import stats</span><br><span class="line">&gt;&gt;&gt; t&#x3D;stats.t(5)</span><br><span class="line">&gt;&gt;&gt; t.interval(0.95)</span><br><span class="line">(-2.5705818366147395, 2.5705818366147395)</span><br><span class="line">&gt;&gt;&gt; t.cdf(2.571)</span><br><span class="line">0.9750126826580743</span><br><span class="line">&gt;&gt;&gt; t.cdf(2.571)-t.cdf(-2.571)</span><br><span class="line">0.9500253653161486</span><br><span class="line">&gt;&gt;&gt; t.ppf(0.975)</span><br><span class="line">2.5705818366147395</span><br></pre></td></tr></table></figure>
+<h2 id="methods"><a class="markdownIt-Anchor" href="#methods"></a> Methods</h2>
+<table>
+<thead>
+<tr>
+<th>methods</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>rvs(df, loc=0, scale=1, size=1, random_state=None)</strong></td>
+<td>Random variates.</td>
+</tr>
+<tr>
+<td>!!! <strong>pdf(x, df, loc=0, scale=1)</strong></td>
+<td>Probability density function. 概率分布函数</td>
+</tr>
+<tr>
+<td><strong>logpdf(x, df, loc=0, scale=1)</strong></td>
+<td>Log of the probability density function.</td>
+</tr>
+<tr>
+<td>!!! <strong>cdf(x, df, loc=0, scale=1)</strong></td>
+<td>Cumulative distribution function. 累计分布函数</td>
+</tr>
+<tr>
+<td><strong>logcdf(x, df, loc=0, scale=1)</strong></td>
+<td>Log of the cumulative distribution function.</td>
+</tr>
+<tr>
+<td><strong>sf(x, df, loc=0, scale=1)</strong></td>
+<td>Survival function  (also defined as <code>1 - cdf</code>, but <em>sf</em> is sometimes more accurate).</td>
+</tr>
+<tr>
+<td><strong>logsf(x, df, loc=0, scale=1)</strong></td>
+<td>Log of the survival function.</td>
+</tr>
+<tr>
+<td>!!!<strong>ppf(q, df, loc=0, scale=1)</strong></td>
+<td>Percent point function (inverse of <code>cdf</code> — percentiles). cdf的逆函数</td>
+</tr>
+<tr>
+<td><strong>isf(q, df, loc=0, scale=1)</strong></td>
+<td>Inverse survival function (inverse of <code>sf</code>).</td>
+</tr>
+<tr>
+<td><strong>moment(n, df, loc=0, scale=1)</strong></td>
+<td>Non-central moment of order n</td>
+</tr>
+<tr>
+<td><strong>stats(df, loc=0, scale=1, moments=’mv’)</strong></td>
+<td>Mean(‘m’), variance(‘v’), skew(‘s’), and/or kurtosis(‘k’).</td>
+</tr>
+<tr>
+<td><strong>entropy(df, loc=0, scale=1)</strong></td>
+<td>(Differential) entropy of the RV.</td>
+</tr>
+<tr>
+<td><strong>fit(data)</strong></td>
+<td>Parameter estimates for generic data. See <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.fit.html#scipy.stats.rv_continuous.fit" target="_blank" rel="noopener">scipy.stats.rv_continuous.fit</a> for detailed documentation of the keyword arguments.</td>
+</tr>
+<tr>
+<td>*<em>expect(func, args=(df,), loc=0, scale=1, lb=None, ub=None, conditional=False, *<em>kwds)</em></em></td>
+<td>Expected value of a function (of one argument) with respect to the distribution.</td>
+</tr>
+<tr>
+<td><strong>median(df, loc=0, scale=1)</strong></td>
+<td>Median of the distribution.</td>
+</tr>
+<tr>
+<td><strong>mean(df, loc=0, scale=1)</strong></td>
+<td>Mean of the distribution.</td>
+</tr>
+<tr>
+<td><strong>var(df, loc=0, scale=1)</strong></td>
+<td>Variance of the distribution.</td>
+</tr>
+<tr>
+<td><strong>std(df, loc=0, scale=1)</strong></td>
+<td>Standard deviation of the distribution.</td>
+</tr>
+<tr>
+<td><strong>interval(alpha, df, loc=0, scale=1)</strong></td>
+<td>Endpoints of the range that contains fraction alpha [0, 1] of the distribution</td>
+</tr>
+</tbody>
+</table>
+<h2 id="numpy"><a class="markdownIt-Anchor" href="#numpy"></a> numpy</h2>
+<p>x=np.array([1,2,3])</p>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>result</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x.mean()</td>
+<td>2.0</td>
+<td>平均值</td>
+</tr>
+<tr>
+<td>x.var()</td>
+<td>0.6666</td>
+<td>方差=np.sum(np.square(x-x.mean()))/len(x)</td>
+</tr>
+<tr>
+<td>x.var(ddof=1)</td>
+<td>1.0</td>
+<td>S<sup>2</sup>=np.sum(np.square(x-x.mean()))/(len(x)-1)</td>
+</tr>
+<tr>
+<td>x.var(ddof=d)</td>
+<td>xxx</td>
+<td>np.sum(np.square(x-x.mean()))/(len(x)-d)</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------end-------------</div>
+    
+</div>
+      
+    </div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ouyen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ouyen.github.io/py-in-statistics/" title="概统课上使用的python代码片段">https://ouyen.github.io/py-in-statistics/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/rss/" rel="prev" title="rss的一些事">
+      <i class="fa fa-chevron-left"></i> rss的一些事
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>   
+
+    
+
+    <div>
+    <center>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <div class="social-share" data-sites="weibo, qq, qzone,wechat"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+    </center>
+    </div>   
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#import"><span class="nav-number">1.</span> <span class="nav-text"> import …</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正态分布"><span class="nav-number">2.</span> <span class="nav-text"> 正态分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chi2分布"><span class="nav-number">3.</span> <span class="nav-text"> χ2\chi^2χ2分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成"><span class="nav-number">3.1.</span> <span class="nav-text"> 生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#置信区间"><span class="nav-number">3.2.</span> <span class="nav-text"> 置信区间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t分布"><span class="nav-number">4.</span> <span class="nav-text"> T分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成-2"><span class="nav-number">4.1.</span> <span class="nav-text"> 生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#f分布"><span class="nav-number">5.</span> <span class="nav-text"> F分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要method"><span class="nav-number">6.</span> <span class="nav-text"> 重要method:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods"><span class="nav-number">7.</span> <span class="nav-text"> Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy"><span class="nav-number">8.</span> <span class="nav-text"> numpy</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ouyen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/281016992" title="bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;281016992" rel="noopener" target="_blank"><i class="iconfont icon-bilibili-line fa-fw"></i>bilibili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ouyen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css">
+  <script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css">
+
+
+  
+
+</body>
+</html>

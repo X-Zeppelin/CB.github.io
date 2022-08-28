@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="wow-Evd5uLGiGV0hxPdbLOMPcT8yPy6yQO1AZzlkUvM">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ouyen.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一晚上的尝试(主要时间花在了解决waydroid的问题上)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu-20.04安装anbox与waydroid问题解决">
+<meta property="og:url" content="https://ouyen.github.io/ubuntu-anbox/index.html">
+<meta property="og:site_name" content="纯白的小站">
+<meta property="og:description" content="一晚上的尝试(主要时间花在了解决waydroid的问题上)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-07T12:30:30.000Z">
+<meta property="article:modified_time" content="2022-03-07T13:39:41.692Z">
+<meta property="article:author" content="ouyen">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="anbox">
+<meta property="article:tag" content="android">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ouyen.github.io/ubuntu-anbox/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ubuntu-20.04安装anbox与waydroid问题解决 | 纯白的小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="纯白的小站" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">纯白的小站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ouyen.github.io/ubuntu-anbox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ouyen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="纯白的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu-20.04安装anbox与waydroid问题解决
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-07 20:30:30 / 修改时间：21:39:41" itemprop="dateCreated datePublished" datetime="2022-03-07T20:30:30+08:00">2022-03-07</time>
+            </span>
+
+          
+            <div class="post-description">一晚上的尝试(主要时间花在了解决waydroid的问题上)</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="anbox介绍-from-wikipedia"><a class="markdownIt-Anchor" href="#anbox介绍-from-wikipedia"></a> anbox介绍 (from wikipedia)</h2>
+<blockquote>
+<p><strong>Anbox</strong>是一个<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E5%8F%8A%E5%BC%80%E6%94%BE%E6%BA%90%E4%BB%A3%E7%A0%81%E8%BD%AF%E4%BB%B6" target="_blank" rel="noopener">自由及开放源代码</a>的<a href="https://zh.wikipedia.org/wiki/%E5%85%BC%E5%AE%B9%E5%B1%82" target="_blank" rel="noopener">兼容层</a>，旨在将<a href="https://zh.wikipedia.org/wiki/Android" target="_blank" rel="noopener">Android</a>上的<a href="https://zh.wikipedia.org/wiki/%E6%B5%81%E5%8B%95%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F" target="_blank" rel="noopener">移动应用程序</a>和<a href="https://zh.wikipedia.org/wiki/%E6%89%8B%E6%9C%BA%E6%B8%B8%E6%88%8F" target="_blank" rel="noopener">移动游戏</a>移植到GNU/<a href="https://zh.wikipedia.org/wiki/Linux%E5%8F%91%E8%A1%8C%E7%89%88" target="_blank" rel="noopener">Linux发行版</a>上运行[<a href="https://zh.wikipedia.org/wiki/Anbox#cite_note-2" target="_blank" rel="noopener">2]</a>。Anbox的初始版本于2017年4月11日正式发布。</p>
+</blockquote>
+<h2 id="安装anbox"><a class="markdownIt-Anchor" href="#安装anbox"></a> 安装anbox</h2>
+<p>主要参考这个文章:<a href="https://ubuntuhandbook.org/index.php/2021/10/anbox-run-android-apps-ubuntu/" target="_blank" rel="noopener">https://ubuntuhandbook.org/index.php/2021/10/anbox-run-android-apps-ubuntu/</a></p>
+<ol>
+<li>load kernel modules</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe ashmem_linux</span><br><span class="line">sudo modprobe binder_linux</span><br></pre></td></tr></table></figure>
+<p>​	查看内核情况: (使用这个命令, 不要使用anbox官网的那个)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep -e ashmem_linux -e binder_linux</span><br></pre></td></tr></table></figure>
+<p>​	结果如下(数字无所谓)即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lsmod | grep -e ashmem_linux -e binder_linux</span><br><span class="line">binder_linux          200704  31</span><br><span class="line">ashmem_linux           20480  10</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>install anbox</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snap install anbox --beta --devmode</span><br></pre></td></tr></table></figure>
+<p>​	updata:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snap refresh --beta --devmode anbox</span><br></pre></td></tr></table></figure>
+<p>​	show anbox version</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snap info anbox</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>
+<p>set proxy</p>
+<p>安装adb: <code>sudo apt install adb</code></p>
+<p>使用<code>ifconfig</code>命令获取本机ip (要找形如192.168.1.xxx的)</p>
+<p>一个参考形式的<code>grep</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig | grep -o &#39;inet 192.168.1.[0-9]*&#39; |  grep -o &#39;192.168.1.[0-9]*&#39;</span><br></pre></td></tr></table></figure>
+<p>得到了本机地址: <code>192.168.1.235</code></p>
+<p>假设代理端口在7890:()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell settings put global http_proxy 192.168.1.235:7890</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装google play添加arm支持</p>
+<p>使用github上的脚本: <a href="https://github.com/geeks-r-us/anbox-playstore-installer/" target="_blank" rel="noopener">https://github.com/geeks-r-us/anbox-playstore-installer/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install lzip</span><br><span class="line">wget -O -  https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;geeks-r-us&#x2F;anbox-playstore-installer&#x2F;master&#x2F;install-playstore.sh | bash</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>root(未尝试)</p>
+<p>[Installing UI root access manager on Anbox <a href="https://github.com/anbox/anbox/issues/894" target="_blank" rel="noopener">Magisk|failed] [SuperSu|succeeded] · Issue #894 · anbox/anbox</a></p>
+</li>
+</ol>
+<h2 id="waydroid"><a class="markdownIt-Anchor" href="#waydroid"></a> waydroid</h2>
+<p><a href="https://waydro.id/#install" target="_blank" rel="noopener">https://waydro.id/#install</a></p>
+<ol>
+<li>
+<p>介绍(from arch wiki)</p>
+<blockquote>
+<p>Waydroid 是一种基于容器的方法，用于在常规 GNU/Linux 系统上启动完整的 Android 系统。</p>
+</blockquote>
+</li>
+<li>
+<p>一些问题:</p>
+<ol>
+<li>需要切换到wayland 但是在wayland下fcitx5的输入框位置不会随窗口移动</li>
+<li>大问题: 安装后无法开机</li>
+</ol>
+</li>
+<li>
+<p>解决这个问题:<br />
+主要是安装waydroid库的时候引入了高版本的<code>mutter-common</code>;<br />
+需要在secure模式命令行恢复:<br />
+先删除那个库 <code>rm xxx</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt-cache madison mutter-common #查看ubuntu源中mutter-common版本</span><br><span class="line">sudo apt install mutter-common&#x3D;3.36.9-0ubuntu0.20.04.2 #安装制定版本</span><br><span class="line">reboot #重启即可</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="参考链接"><a class="markdownIt-Anchor" href="#参考链接"></a> 参考链接</h2>
+<p><a href="https://docs.anbox.io/userguide/install.html" target="_blank" rel="noopener">https://docs.anbox.io/userguide/install.html</a></p>
+<p><a href="https://blog.eldernode.com/install-anbox-on-ubuntu-20-04/" target="_blank" rel="noopener">https://blog.eldernode.com/install-anbox-on-ubuntu-20-04/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/50994213" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/50994213</a></p>
+<p><a href="https://ubuntuhandbook.org/index.php/2021/10/anbox-run-android-apps-ubuntu/" target="_blank" rel="noopener">https://ubuntuhandbook.org/index.php/2021/10/anbox-run-android-apps-ubuntu/</a></p>
+
+    </div>
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------end-------------</div>
+    
+</div>
+      
+    </div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>ouyen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ouyen.github.io/ubuntu-anbox/" title="Ubuntu-20.04安装anbox与waydroid问题解决">https://ouyen.github.io/ubuntu-anbox/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"><i class="fa fa-tag"></i> ubuntu</a>
+              <a href="/tags/anbox/" rel="tag"><i class="fa fa-tag"></i> anbox</a>
+              <a href="/tags/android/" rel="tag"><i class="fa fa-tag"></i> android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ubuntu-chromium/" rel="prev" title="在ubuntu 20.04上使用chromium">
+      <i class="fa fa-chevron-left"></i> 在ubuntu 20.04上使用chromium
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/rss/" rel="next" title="rss的一些事">
+      rss的一些事 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>   
+
+    
+
+    <div>
+    <center>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <div class="social-share" data-sites="weibo, qq, qzone,wechat"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+    </center>
+    </div>   
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#anbox介绍-from-wikipedia"><span class="nav-number">1.</span> <span class="nav-text"> anbox介绍 (from wikipedia)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装anbox"><span class="nav-number">2.</span> <span class="nav-text"> 安装anbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#waydroid"><span class="nav-number">3.</span> <span class="nav-text"> waydroid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text"> 参考链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ouyen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/281016992" title="bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;281016992" rel="noopener" target="_blank"><i class="iconfont icon-bilibili-line fa-fw"></i>bilibili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ouyen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css">
+  <script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css">
+
+
+  
+
+</body>
+</html>

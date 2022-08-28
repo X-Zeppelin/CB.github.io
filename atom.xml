@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>纯白的小站</title>
+  <icon>https://ouyen.github.io/icon.png</icon>
+  
+  <link href="https://ouyen.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://ouyen.github.io/"/>
+  <updated>2022-05-29T16:59:23.725Z</updated>
+  <id>https://ouyen.github.io/</id>
+  
+  <author>
+    <name>ouyen</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>概统课上使用的python代码片段</title>
+    <link href="https://ouyen.github.io/py-in-statistics/"/>
+    <id>https://ouyen.github.io/py-in-statistics/</id>
+    <published>2022-05-19T14:53:54.000Z</published>
+    <updated>2022-05-29T16:59:23.725Z</updated>
+    
+    
+    <summary type="html">基本上就是python上各种分布现成的包</summary>
+    
+    
+    
+    
+    <category term="python" scheme="https://ouyen.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rss的一些事</title>
+    <link href="https://ouyen.github.io/rss/"/>
+    <id>https://ouyen.github.io/rss/</id>
+    <published>2022-03-09T16:02:45.000Z</published>
+    <updated>2022-03-09T16:21:38.504Z</updated>
+    
+    
+    <summary type="html">了解了下rss,并为本博客开启rss, 以及获取rss+tg订阅rss的方法</summary>
+    
+    
+    
+    
+    <category term="hexo" scheme="https://ouyen.github.io/tags/hexo/"/>
+    
+    <category term="telegram" scheme="https://ouyen.github.io/tags/telegram/"/>
+    
+    <category term="rss" scheme="https://ouyen.github.io/tags/rss/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu-20.04安装anbox与waydroid问题解决</title>
+    <link href="https://ouyen.github.io/ubuntu-anbox/"/>
+    <id>https://ouyen.github.io/ubuntu-anbox/</id>
+    <published>2022-03-07T12:30:30.000Z</published>
+    <updated>2022-03-07T13:39:41.692Z</updated>
+    
+    
+    <summary type="html">一晚上的尝试(主要时间花在了解决waydroid的问题上)</summary>
+    
+    
+    
+    
+    <category term="ubuntu" scheme="https://ouyen.github.io/tags/ubuntu/"/>
+    
+    <category term="anbox" scheme="https://ouyen.github.io/tags/anbox/"/>
+    
+    <category term="android" scheme="https://ouyen.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在ubuntu 20.04上使用chromium</title>
+    <link href="https://ouyen.github.io/ubuntu-chromium/"/>
+    <id>https://ouyen.github.io/ubuntu-chromium/</id>
+    <published>2022-03-03T16:41:33.000Z</published>
+    <updated>2022-03-07T12:30:04.306Z</updated>
+    
+    
+    <summary type="html">使用mint源的chromium</summary>
+    
+    
+    
+    
+    <category term="ubuntu" scheme="https://ouyen.github.io/tags/ubuntu/"/>
+    
+    <category term="chromium" scheme="https://ouyen.github.io/tags/chromium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小米路由器4A千兆版刷入openwrt与校园网下开启ipv6</title>
+    <link href="https://ouyen.github.io/xioamiR4a/"/>
+    <id>https://ouyen.github.io/xioamiR4a/</id>
+    <published>2022-02-21T11:14:27.000Z</published>
+    <updated>2022-02-21T11:55:02.154Z</updated>
+    
+    
+    <summary type="html">.</summary>
+    
+    
+    
+    
+    <category term="openwrt" scheme="https://ouyen.github.io/tags/openwrt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu20.04 安装fcitx5输入法</title>
+    <link href="https://ouyen.github.io/fcitx5-ubuntu/"/>
+    <id>https://ouyen.github.io/fcitx5-ubuntu/</id>
+    <published>2022-02-11T05:15:05.000Z</published>
+    <updated>2022-03-07T12:29:15.106Z</updated>
+    
+    
+    <summary type="html">ubuntu 20.04.3下fcitx5 需要从flatpak安装，（由于qt版本，fcitx5-config只能安装在20.10上），中间出了各种问题，最后发现以下解决方案最好：</summary>
+    
+    
+    
+    
+    <category term="ubuntu" scheme="https://ouyen.github.io/tags/ubuntu/"/>
+    
+    <category term="fcitx5" scheme="https://ouyen.github.io/tags/fcitx5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh一些小技巧</title>
+    <link href="https://ouyen.github.io/ssh/"/>
+    <id>https://ouyen.github.io/ssh/</id>
+    <published>2022-01-26T05:01:39.000Z</published>
+    <updated>2022-01-26T05:12:22.336Z</updated>
+    
+    
+    <summary type="html">ssh免密登陆</summary>
+    
+    
+    
+    
+    <category term="ssh linux" scheme="https://ouyen.github.io/tags/ssh-linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vim</title>
+    <link href="https://ouyen.github.io/vim/"/>
+    <id>https://ouyen.github.io/vim/</id>
+    <published>2022-01-21T11:26:38.000Z</published>
+    <updated>2022-04-11T14:55:33.909Z</updated>
+    
+    
+    <summary type="html">vim随手记录</summary>
+    
+    
+    
+    
+    <category term="vim linux" scheme="https://ouyen.github.io/tags/vim-linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub 使用笔记</title>
+    <link href="https://ouyen.github.io/github/"/>
+    <id>https://ouyen.github.io/github/</id>
+    <published>2022-01-20T14:10:34.000Z</published>
+    <updated>2022-05-03T11:49:37.733Z</updated>
+    
+    
+    <summary type="html">GitHub入门与实践</summary>
+    
+    
+    
+    
+    <category term="github" scheme="https://ouyen.github.io/tags/github/"/>
+    
+    <category term="git" scheme="https://ouyen.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu下安装docker</title>
+    <link href="https://ouyen.github.io/docker/"/>
+    <id>https://ouyen.github.io/docker/</id>
+    <published>2022-01-19T11:59:36.000Z</published>
+    <updated>2022-01-19T12:29:04.293Z</updated>
+    
+    
+    <summary type="html">ubuntu下安装docker</summary>
+    
+    
+    
+    
+    <category term="ubuntu" scheme="https://ouyen.github.io/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vlc在ubuntu20.04上的一个bug与解决</title>
+    <link href="https://ouyen.github.io/vlc-bug/"/>
+    <id>https://ouyen.github.io/vlc-bug/</id>
+    <published>2021-03-16T07:43:38.000Z</published>
+    <updated>2021-03-16T07:51:40.000Z</updated>
+    
+    
+    <summary type="html">ubuntu20.04下vlc会停留在top bar上</summary>
+    
+    
+    
+    
+    <category term="vlc ubuntu" scheme="https://ouyen.github.io/tags/vlc-ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>检测链接是否被腾讯封锁</title>
+    <link href="https://ouyen.github.io/sbtx/"/>
+    <id>https://ouyen.github.io/sbtx/</id>
+    <published>2021-02-12T09:13:00.000Z</published>
+    <updated>2021-02-17T06:46:57.000Z</updated>
+    
+    
+    <summary type="html">检测链接是否被腾讯封锁以及利用github page绕过腾讯封锁</summary>
+    
+    
+    
+    
+    <category term="python" scheme="https://ouyen.github.io/tags/python/"/>
+    
+    <category term="github" scheme="https://ouyen.github.io/tags/github/"/>
+    
+    <category term="tencent" scheme="https://ouyen.github.io/tags/tencent/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu 20.04运行HMCL</title>
+    <link href="https://ouyen.github.io/HMCL/"/>
+    <id>https://ouyen.github.io/HMCL/</id>
+    <published>2021-01-31T05:08:17.000Z</published>
+    <updated>2021-02-17T06:46:40.000Z</updated>
+    
+    
+    <summary type="html">在安装了openjdk11的环境下运行HMCL</summary>
+    
+    
+    
+    
+    <category term="java" scheme="https://ouyen.github.io/tags/java/"/>
+    
+    <category term="minecraft" scheme="https://ouyen.github.io/tags/minecraft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>下载教材pdf</title>
+    <link href="https://ouyen.github.io/download-pdf/"/>
+    <id>https://ouyen.github.io/download-pdf/</id>
+    <published>2021-01-26T05:48:30.000Z</published>
+    <updated>2021-02-17T06:46:30.000Z</updated>
+    
+    
+    <summary type="html">随便写一个下载教材的爬虫</summary>
+    
+    
+    
+    
+    <category term="python" scheme="https://ouyen.github.io/tags/python/"/>
+    
+    <category term="爬虫" scheme="https://ouyen.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+    <category term="多线程" scheme="https://ouyen.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu下一些命令</title>
+    <link href="https://ouyen.github.io/ubuntu/"/>
+    <id>https://ouyen.github.io/ubuntu/</id>
+    <published>2021-01-23T16:00:00.000Z</published>
+    <updated>2022-03-05T15:57:29.891Z</updated>
+    
+    
+    <summary type="html">ubuntu下一些命令</summary>
+    
+    
+    
+    
+    <category term="ubuntu" scheme="https://ouyen.github.io/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>csharp</title>
+    <link href="https://ouyen.github.io/csharp/"/>
+    <id>https://ouyen.github.io/csharp/</id>
+    <published>2020-12-16T04:29:51.000Z</published>
+    <updated>2020-12-16T05:52:28.000Z</updated>
+    
+    
+    <summary type="html">csharp入门</summary>
+    
+    
+    
+    
+    <category term="csharp" scheme="https://ouyen.github.io/tags/csharp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown语法备忘</title>
+    <link href="https://ouyen.github.io/markdown/"/>
+    <id>https://ouyen.github.io/markdown/</id>
+    <published>2020-11-25T01:20:43.000Z</published>
+    <updated>2022-03-05T15:55:52.479Z</updated>
+    
+    
+    <summary type="html">markdown语法随记</summary>
+    
+    
+    
+    
+    <category term="markdown" scheme="https://ouyen.github.io/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 数据分析与展示</title>
+    <link href="https://ouyen.github.io/data-analys/"/>
+    <id>https://ouyen.github.io/data-analys/</id>
+    <published>2020-07-10T05:11:08.000Z</published>
+    <updated>2020-07-10T16:15:14.000Z</updated>
+    
+    
+    <summary type="html">《Python数据分析与展示》课程笔记</summary>
+    
+    
+    
+    
+    <category term="python" scheme="https://ouyen.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>苏联东欧政治笑话</title>
+    <link href="https://ouyen.github.io/jokes/"/>
+    <id>https://ouyen.github.io/jokes/</id>
+    <published>2020-06-11T05:54:23.000Z</published>
+    <updated>2020-06-11T06:27:58.000Z</updated>
+    
+    
+    <summary type="html">苏联笑话701则，转载于网络</summary>
+    
+    
+    
+    
+    <category term="历史" scheme="https://ouyen.github.io/tags/%E5%8E%86%E5%8F%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MD5冲突</title>
+    <link href="https://ouyen.github.io/md5-collisions/"/>
+    <id>https://ouyen.github.io/md5-collisions/</id>
+    <published>2020-06-04T08:04:57.000Z</published>
+    <updated>2020-06-11T05:54:58.000Z</updated>
+    
+    
+    <summary type="html">偶然发现的两个MD5相同的图片</summary>
+    
+    
+    
+    
+    <category term="MD5" scheme="https://ouyen.github.io/tags/MD5/"/>
+    
+  </entry>
+  
+</feed>
